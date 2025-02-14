@@ -1,12 +1,16 @@
 import becker.robots.Robot;
+
 /**
-* creates a helper class that contains public static functions. 
+* RobotHelper class provides static methods helping robot writing letters on the map. 
 *  This allows putting many methods apart from RobotTask.java into this helper class,
 *  This way makes the code structure clearer and more accessible.
-*  
 */
 public class RobotHelpers {
-	//writes a capital letter S
+	/**
+	 * Writes a capital letter S. 
+	 * Robot ending position will be one block right from the letter, heading straight to its direction.
+	 * @param r robot to move
+	 */
 	public static void write_S(Robot r) {
 		move_and_put(r, 4);	
 		turn_right(r);	
@@ -29,7 +33,11 @@ public class RobotHelpers {
 		move(r, 6);
 	}
 
-	//writes a capital letter A
+	/**
+	 * Writes a capital letter A. 
+	 * Robot ending position will be one block right from the letter, heading straight to its direction.
+	 * @param r robot to move
+	 */
 	public static void write_A(Robot r) {
 		r.turnLeft();
 		move_and_put(r, 5);
@@ -57,7 +65,11 @@ public class RobotHelpers {
 		r.turnLeft();
 	}
 
-	//wrties a capital letter R
+	/**
+	 * Writes a capital letter R. 
+	 * Robot ending position will be one block right from the letter, heading straight to its direction.
+	 * @param r robot to move
+	 */
 	public static void write_R(Robot r) {
 		r.turnLeft();
 		move_and_put(r, 6);
@@ -90,7 +102,11 @@ public class RobotHelpers {
 		turn_right(r); 
 	}
 
-	//writes a capital letter H
+	/**
+	 * Writes a capital letter H. 
+	 * Robot ending position will be one block right from the letter, heading straight to its direction.
+	 * @param r robot to move
+	 */
    public static void write_H(Robot r) {
 		r.turnLeft();
 		move_and_put(r, 7);
@@ -110,21 +126,33 @@ public class RobotHelpers {
 		turn_right(r);  
 	}
 
-	//runs a runnable function func for t times.
+	/**
+	 * Repeates a runnable function for t times.
+	 * @param func function to run
+	 * @param t the number of times to repeat the function.
+	 */
 	public static void repeat(Runnable func, int t) {
 		for (int i = 0; i < t; ++i) {
 			func.run();
 		}
 	}
 
-	//moves robot to n number of blocks.
+	/**
+	 * Moves the robot n blocks forward.
+	 * @param robot Robot to move
+	 * @param n the number of blocks to move
+	 */
 	public static void move(Robot robot, int n) {
 		repeat(() -> {
 			robot.move();
 		}, n);	
 	}
-
-	//put a thing first and then move robot. Repeats this for n times.
+	
+	/**
+	 * Put a thing first and then move robot. Repeats this for n times.
+	 * @param robot Robot to move
+	 * @param n the number of times to perform this function.
+	 */
 	public static void move_and_put(Robot robot, int n) {
 		repeat(() -> {
 			robot.putThing();
@@ -132,21 +160,34 @@ public class RobotHelpers {
 		}, n);	
 	}
 
-	//make robot turn left for n times
+	/**
+	 * Make robot turn left for n times
+	 * @param robot Robot to move
+	 * @param n the number of times to perform this function.
+	 */
 	public static void turn_left(Robot robot, int n) {
 		repeat(() -> {
 			robot.turnLeft();
 		}, n);
 	}
 
-	//make robot turn right for n times
+	/**
+	 * Make robot turn right for n times
+	 * @param robot Robot to move
+	 * @param n the number of times to perform this function.
+	 */
 	public static void turn_right(Robot robot, int n) {
 		repeat(() -> {
 			turn_right(robot);
 		}, n);
 	}
 
-	//make robot turn right by repeating turning left 3 times
+
+	/**
+	 * Make robot turn right for n times
+	 * @param robot Robot to move
+	 * @param n the number of times to perform this function.
+	 */
 	public static void turn_right(Robot robot) {
 		robot.turnLeft();
 		robot.turnLeft();
